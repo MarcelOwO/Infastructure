@@ -1,0 +1,21 @@
+services:
+  srs:
+    image: ossrs/srs:6
+    container_name: srs
+    restart: unless-stopped
+    ports:
+      - "1935:1935"
+    volumes:
+      - ./srs/conf:/usr/local/srs/conf
+      - ./srs/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.stream.rule=Host(`stream.marcel-sigl.dev`)"
+      - "traefik.http.routers.stream.entrypoints=web"
+      - "traefik.http.services.stream.loadbalancer.server.port=8080" 
+    networks: [ proxy ]
+
+networks:
+  proxy:
+    external: true
+

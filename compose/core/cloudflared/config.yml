@@ -1,0 +1,9 @@
+# Optional, but nice: default log level
+loglevel: info
+
+# Route all subdomains of your domain to Traefik
+ingress:
+  - hostname: "*.marcel-sigl.dev"
+    service: http://traefik:80
+  - service: http_status:404
+

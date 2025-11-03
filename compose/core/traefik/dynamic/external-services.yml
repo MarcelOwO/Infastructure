@@ -1,0 +1,17 @@
+http:
+  serversTransports:
+    insecure-skipverify:    
+      insecureSkipVerify: true
+
+  routers:
+    images:
+      rule: Host(`images.marcel-sigl.dev`)
+      entryPoints: [web]
+      service: images-svc
+
+  services:
+    images-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.50.69:2283   
+

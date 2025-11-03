@@ -1,0 +1,13 @@
+http:
+  routers:
+    traefik-dashboard:
+      rule: Host(`traefik.marcel-sigl.dev`)
+      entryPoints: [web]
+      service: api@internal
+      middlewares: [dashboard-auth]   # optional but recommended
+
+  middlewares:
+    dashboard-auth:
+      basicAuth:
+        users:
+          - "admin:$2y$05$kUhu3i57Mw3OBHDrJdsJYewpPx6qd9idJALsvAIyROkINx0DuFWcO"
