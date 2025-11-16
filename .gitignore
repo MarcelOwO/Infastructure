@@ -1,2 +1,4 @@
 .env
 */.env
+
+./compose/apps/srs/srs/data
