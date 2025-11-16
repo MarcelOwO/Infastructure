@@ -5,5 +5,7 @@ loglevel: info
 ingress:
   - hostname: "*.marcel-sigl.dev"
     service: http://traefik:80
+    originRequest:
+      disableChunkedEncoding: true
   - service: http_status:404
 
