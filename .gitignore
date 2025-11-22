@@ -1,4 +1,18 @@
 .env
-*/.env
+*.env
 
-./compose/apps/srs/srs/data
+compose/apps/srs/srs/data/
+
+compose/apps/forgejo/mysql/
+compose/apps/forgejo/forgejo/
+
+**/data/
+**/storage/
+**/session/
+**/sessions/
+**/logs/
+
+*.key
+*.pem
+*.pub
+*.pem.*
