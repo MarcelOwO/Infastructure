@@ -13,5 +13,5 @@ http:
     images-svc:
       loadBalancer:
         servers:
-          - url: http://192.168.50.69:2283   
+          - url: http://10.0.0.11:2283   
 
