@@ -1,6 +1,6 @@
 http:
   serversTransports:
-    insecure-skipverify:    
+    insecure-skipverify:
       insecureSkipVerify: true
 
   routers:
@@ -8,10 +8,18 @@ http:
       rule: Host(`images.marcel-sigl.dev`)
       entryPoints: [web]
       service: images-svc
+    proxmox:
+      rule: Host(`proxmox.marcel-sigl.dev`)
+      entryPoints: [web]
+      service: proxmox-svc
 
   services:
+    proxmox-svc:
+      loadBalancer:
+        servers:
+          - url: http://10.0.0.1:8006
+
     images-svc:
       loadBalancer:
         servers:
-          - url: http://10.0.0.11:2283   
-
+          - url: http://10.0.0.11:2283
