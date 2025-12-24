@@ -8,8 +8,6 @@ services:
     container_name: homepage
     environment:
       HOMEPAGE_ALLOWED_HOSTS: homepage.marcel-sigl.dev
-    ports:
-      - 3000:3000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.homepage.rule=Host(`homepage.marcel-sigl.dev`)"
