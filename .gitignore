@@ -16,3 +16,5 @@ compose/apps/forgejo/forgejo/
 *.pem
 *.pub
 *.pem.*
+
+**/acme.json
