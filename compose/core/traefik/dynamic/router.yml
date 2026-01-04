@@ -1,0 +1,22 @@
+http:
+  routers:
+    router:
+      rule: Host(`router.marcel-sigl.dev`)
+      entryPoints:
+        - websecure
+      middlewares:
+        - local-only
+      service: router-svc
+      tls:
+        certResolver: myresolver
+
+  services:
+    router-svc:
+      loadBalancer:
+        serversTransport: insecure-skipverify
+        servers:
+          - url: "https://10.0.0.1:8443"
+
+serversTransports:
+  pve-transport:
+    insecureSkipVerify: true
