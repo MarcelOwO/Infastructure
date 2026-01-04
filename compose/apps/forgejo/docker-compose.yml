@@ -23,6 +23,7 @@ services:
       - "traefik.http.routers.git.entrypoints=websecure"
       - "traefik.http.routers.git.tls=true"
       - "traefik.http.services.git.loadbalancer.server.port=3000"
+      - "traefik.http.routers.git.tls.certresolver=myresolver"
     volumes:
       - ./forgejo:/data
       - /etc/timezone:/etc/timezone:ro

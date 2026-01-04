@@ -1,0 +1,22 @@
+http:
+  routers:
+    proxmox:
+      rule: Host(`pve.marcel-sigl.dev`)
+      entryPoints:
+        - websecure
+      middlewares:
+        - local-only
+      service: proxmox-svc
+      tls:
+        certResolver: myresolver
+
+  services:
+    proxmox-svc:
+      loadBalancer:
+        serversTransport: insecure-skipverify
+        servers:
+          - url:  "https://10.0.0.10:8006"
+
+serversTransports:
+    pve-transport:
+      insecureSkipVerify: true

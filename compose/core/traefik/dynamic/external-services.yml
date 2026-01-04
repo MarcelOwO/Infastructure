@@ -9,7 +9,8 @@ http:
       entryPoints:
         - websecure
       service: images-svc
-      tls: {}
+      tls: 
+        certResolver: myresolver
 
   services:
     images-svc:

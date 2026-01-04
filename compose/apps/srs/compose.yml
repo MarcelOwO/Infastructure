@@ -14,6 +14,7 @@ services:
       - "traefik.http.routers.stream.rule=Host(`stream.marcel-sigl.dev`)"
       - "traefik.http.routers.stream.entrypoints=websecure"
       - "traefik.http.routers.stream.tls=true"
+      - "traefik.http.routers.stream.tls.certresolver=myresolver"
       - "traefik.http.services.stream.loadbalancer.server.port=8080"
 
       - "traefik.http.middlewares.stream-redirect.redirectregex.regex=^/$"
