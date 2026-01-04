@@ -6,11 +6,14 @@ http:
   routers:
     images:
       rule: Host(`images.marcel-sigl.dev`)
-      entryPoints: [web]
+      entryPoints:
+        - websecure
       service: images-svc
+      tls: {}
 
   services:
     images-svc:
       loadBalancer:
+        serversTransport: insecure-skipverify
         servers:
           - url: http://10.0.0.11:2283

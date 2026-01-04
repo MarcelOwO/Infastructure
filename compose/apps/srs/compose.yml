@@ -12,13 +12,14 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.stream.rule=Host(`stream.marcel-sigl.dev`)"
-      - "traefik.http.routers.stream.entrypoints=web"
-      - "traefik.http.services.stream.loadbalancer.server.port=8080" 
+      - "traefik.http.routers.stream.entrypoints=websecure"
+      - "traefik.http.routers.stream.tls=true"
+      - "traefik.http.services.stream.loadbalancer.server.port=8080"
 
       - "traefik.http.middlewares.stream-redirect.redirectregex.regex=^/$"
       - "traefik.http.middlewares.stream-redirect.redirectregex.replacement=/owo/stream.m3u8"
-      - "traefik.http.routers.stream.middlewares=stream-redirect"    
-    networks: [ proxy ]
+      - "traefik.http.routers.stream.middlewares=stream-redirect"
+    networks: [proxy]
 
 networks:
   proxy:

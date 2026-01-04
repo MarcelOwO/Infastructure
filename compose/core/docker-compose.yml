@@ -3,7 +3,7 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared
     restart: unless-stopped
-    networks: 
+    networks:
       - proxy
     command: tunnel run
     environment:
@@ -22,8 +22,10 @@ services:
       - "--providers.file.directory=etc/traefik/dynamic"
       - "--providers.file.watch=true"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
     ports:
       - "80:80"
+      - "443:433"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -31,5 +33,4 @@ services:
 
 networks:
   proxy:
-    external : true
-
+    external: true
